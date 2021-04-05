@@ -3,7 +3,7 @@ use num_enum::{IntoPrimitive, TryFromPrimitive};
 use std::ops::{BitOr, BitOrAssign, BitAnd};
 
 /// A single panel.
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 pub struct Panel {
     /// The panel's kind.
     pub kind: PanelKind,
