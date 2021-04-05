@@ -1,3 +1,16 @@
+//! Single panel operations.
+//!
+//! # Examples
+//! ```
+//! use citrus_common::{Panel, PanelKind, Exits};
+//!
+//! let mut panel = Panel::new(PanelKind::Encounter);
+//! panel.exits |= Exits::SOUTH;
+//! panel.exits |= Exits::NORTH;
+//! 
+//! assert!(panel.exits.has(Exits::SOUTH));
+//! ```
+
 use num_enum::{IntoPrimitive, TryFromPrimitive};
 
 use std::ops::{BitOr, BitOrAssign, BitAnd};

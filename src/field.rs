@@ -1,3 +1,29 @@
+//! Field tools and structs.
+//!
+//! The centerpiece of this module is [`Field`], an owned field that can be
+//! manipulated as you please.
+//!
+//! # Examples
+//! ```
+//! use citrus_common::{Field, Panel, PanelKind::*};
+//!
+//! let mut field = Field::new_slice(&[
+//!     &[Panel::new(Draw), Panel::new(Encounter)],
+//!     &[Panel::new(Bonus), Panel::new(Drop)],
+//! ]);
+//!
+//! // ...i want that draw panel to be a draw2x...
+//! let mut draw_panel = field.get_mut(0, 0);
+//! draw_panel.kind = Draw2x;
+//!
+//! // ...i want the panel to the south to be a bonus2x...
+//! let mut southern_panel = draw_panel.offset(0, 1).unwrap();
+//! southern_panel.kind = Bonus2x;
+//!
+//! assert_eq!(field.get(0, 0).kind, Draw2x);
+//! assert_eq!(field.get(0, 1).kind, Bonus2x);
+//! ```
+
 use crate::panel::*;
 
 use std::ops::{Deref, DerefMut};

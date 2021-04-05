@@ -3,6 +3,8 @@
 pub mod field;
 pub mod format;
 pub mod panel;
+
+#[doc(hidden)]
 pub mod util;
 
 pub use field::Field;
