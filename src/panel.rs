@@ -17,6 +17,9 @@ pub struct Panel {
 }
 
 impl Panel {
+    /// An empty panel.
+    pub const EMPTY: Panel = Panel::new(PanelKind::Empty);
+
     /// Creates a new panel from the panel's kind.
     pub const fn new(kind: PanelKind) -> Panel {
         Panel {
