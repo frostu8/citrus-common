@@ -42,7 +42,7 @@ pub const S15: (usize, usize) = (15, 15);
 pub fn encode<T>(field: &Field, mut output: T) -> Result<(usize, usize), Error>
 where T: Write {
     // encode the field data
-    for (x, y) in field.row_iter() {
+    for (x, y) in field.iter() {
         let panel = field.get(x, y);
 
         output.write(&[

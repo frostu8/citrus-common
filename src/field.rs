@@ -117,8 +117,8 @@ impl Field {
         PanelMut::new(self, x, y)
     }
 
-    /// Gets an iterator over all of the positions on the field.
-    pub fn row_iter(&self) -> impl Iterator<Item = (usize, usize)> {
+    /// Gets an iterator over all of the positions on the field, row-major.
+    pub fn iter(&self) -> impl Iterator<Item = (usize, usize)> {
         let Field { width, height, .. } = *self;
 
         (0..height)
@@ -131,11 +131,11 @@ impl Field {
     /// Rebuilds backtrack exits, using the normal exits as a reference.
     pub fn build_backtrack(&mut self) {
         // reset all backtrack exits
-        for (x, y) in self.row_iter() {
+        for (x, y) in self.iter() {
             self.get_mut(x, y).exits_backtrack = Exits::none();
         }
 
-        for (x, y) in self.row_iter() {
+        for (x, y) in self.iter() {
             // get mut ref
             let panel = self.get_mut(x, y);
 

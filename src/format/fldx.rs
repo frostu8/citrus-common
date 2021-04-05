@@ -32,7 +32,7 @@ where T: Write {
     write_u16(&mut output, field.height() as u16)?;
 
     // write data
-    for (x, y) in field.row_iter() {
+    for (x, y) in field.iter() {
         let panel = field.get(x, y);
 
         // we can do this because the panel's kind already reflects the OJ
