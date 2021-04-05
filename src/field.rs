@@ -118,7 +118,7 @@ impl Field {
     }
 
     /// Gets an iterator over all of the positions on the field, row-major.
-    pub fn iter(&self) -> impl Iterator<Item = (usize, usize)> {
+    pub fn iter(&self) -> impl Iterator<Item = (usize, usize)> + DoubleEndedIterator {
         let Field { width, height, .. } = *self;
 
         (0..height)
@@ -129,25 +129,25 @@ impl Field {
     }
 
     /// Gets an iterator over all of the panels in a row.
-    pub fn row_iter(&self, y: usize) -> impl Iterator<Item = PanelRef> {
+    pub fn row_iter(&self, y: usize) -> impl Iterator<Item = PanelRef> + DoubleEndedIterator + ExactSizeIterator {
         (0..self.width)
             .map(move |x| self.get(x, y))
     }
 
     /// Gets an iterator over all of the rows in a field.
-    pub fn rows_iter(&self) -> impl Iterator<Item = impl Iterator<Item = PanelRef>> {
+    pub fn rows_iter(&self) -> impl Iterator<Item = impl Iterator<Item = PanelRef>> + DoubleEndedIterator + ExactSizeIterator {
         (0..self.height)
             .map(move |y| self.row_iter(y))
     }
 
     /// Gets an iterator over all of the panels in a column.
-    pub fn column_iter(&self, x: usize) -> impl Iterator<Item = PanelRef> {
+    pub fn column_iter(&self, x: usize) -> impl Iterator<Item = PanelRef> + DoubleEndedIterator + ExactSizeIterator {
         (0..self.height)
             .map(move |y| self.get(x, y))
     }
 
     /// Gets an iterator over all of the columns in a field.
-    pub fn columns_iter(&self) -> impl Iterator<Item = impl Iterator<Item = PanelRef>> {
+    pub fn columns_iter(&self) -> impl Iterator<Item = impl Iterator<Item = PanelRef>> + DoubleEndedIterator + ExactSizeIterator {
         (0..self.width)
             .map(move |x| self.column_iter(x))
     }
