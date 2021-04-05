@@ -75,7 +75,7 @@ pub enum PanelKind {
 ///
 /// # Examples
 /// ```
-/// use citrus::panel::Exits;
+/// use citrus_common::panel::Exits;
 ///
 /// // check if our exits has a direction set.
 /// let exits = Exits::SOUTH;

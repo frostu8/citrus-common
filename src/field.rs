@@ -10,7 +10,7 @@ use std::fmt::{Debug, Formatter, Result as FmtResult};
 /// field:
 ///
 /// ```
-/// use citrus::{Field, Panel, PanelKind::*};
+/// use citrus_common::{Field, Panel, PanelKind::*};
 ///
 /// let mut field = Field::new_slice(&[
 ///     &[Panel::new(Draw), Panel::new(Encounter)],
