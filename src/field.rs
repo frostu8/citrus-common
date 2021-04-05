@@ -128,6 +128,30 @@ impl Field {
             .flatten()
     }
 
+    /// Gets an iterator over all of the panels in a row.
+    pub fn row_iter(&self, y: usize) -> impl Iterator<Item = PanelRef> {
+        (0..self.width)
+            .map(move |x| self.get(x, y))
+    }
+
+    /// Gets an iterator over all of the rows in a field.
+    pub fn rows_iter(&self) -> impl Iterator<Item = impl Iterator<Item = PanelRef>> {
+        (0..self.height)
+            .map(move |y| self.row_iter(y))
+    }
+
+    /// Gets an iterator over all of the panels in a column.
+    pub fn column_iter(&self, x: usize) -> impl Iterator<Item = PanelRef> {
+        (0..self.height)
+            .map(move |y| self.get(x, y))
+    }
+
+    /// Gets an iterator over all of the columns in a field.
+    pub fn columns_iter(&self) -> impl Iterator<Item = impl Iterator<Item = PanelRef>> {
+        (0..self.width)
+            .map(move |x| self.column_iter(x))
+    }
+
     /// Rebuilds backtrack exits, using the normal exits as a reference.
     pub fn build_backtrack(&mut self) {
         // reset all backtrack exits
