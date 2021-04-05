@@ -19,7 +19,7 @@ use super::*;
 
 use crate::{Field, Panel, PanelKind};
 
-use std::io::{Cursor, Read, Write, Error, ErrorKind};
+use std::io::{Read, Write, Error, ErrorKind};
 use std::convert::TryFrom as _;
 
 /// Encode a field to the `.fldx` format.
@@ -85,6 +85,8 @@ use base64::{
     write::EncoderStringWriter,
     read::DecoderReader,
 };
+#[cfg(feature = "base64")]
+use std::io::Cursor;
 
 /// Encodes a field to a Base64 string.
 #[cfg(feature = "base64")]
