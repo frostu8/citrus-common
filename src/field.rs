@@ -54,6 +54,7 @@ use std::fmt::{Debug, Formatter, Result as FmtResult};
 /// // ...and watch it reflect on the field!
 /// assert_eq!(field.get(1, 1).kind, Drop2x);
 /// ```
+#[derive(Clone)]
 pub struct Field {
     data: Vec<Panel>,
     width: usize,
